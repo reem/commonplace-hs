@@ -1,17 +1,9 @@
 module Room (
-    Room
-  , name
-  , description
-  , quote
-  , monster
-  , gates
-
-  , Direction(North, NorthEast, SouthEast, South, SouthWest, NorthWest)
-  , GameMap
-  , mapRooms
+    Room(..)
+  , Direction(..)
+  , GameMap(..)
   ) where
 
-import qualified Data.Map
 import Quote (Quote)
 import Monster (Monster)
 
@@ -22,11 +14,14 @@ data Room = Room {
     name :: String
   , description :: String
   , quote :: Quote
-  , monster :: Monster
-  , gates :: Data.Map.Map Direction (Maybe Room)
+  , monster :: Maybe Monster
+  , gates :: [(Direction, Maybe Integer)]
 } deriving (Eq)
 
 instance Show Room where
     show r = unlines [name r, "", description r]
 
-newtype GameMap = GameMap {mapRooms :: [Room]} deriving (Show)
+data GameMap = GameMap {
+    mapRooms :: [Room]
+  , currentRoom :: Integer
+} deriving Show
