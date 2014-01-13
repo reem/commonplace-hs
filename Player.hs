@@ -1,13 +1,5 @@
 module Player (
-    Player
-  , name
-  , description
-  , health
-  , baseHealth
-  , baseAttack
-  , inventory
-  , equipped
-
+    Player(..)
   , Equipped
   , maxHealth
   , attack
