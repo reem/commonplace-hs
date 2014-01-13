@@ -2,6 +2,7 @@ module Types (
     GameItem
   , Health
   , Attack
+  , Back(..)
   ) where
 
 import Equipment (Equipment)
@@ -11,3 +12,5 @@ type GameItem = Either Equipment Treasure
 
 type Health = Integer
 type Attack = Integer
+
+data Back = Back deriving (Read, Show)
