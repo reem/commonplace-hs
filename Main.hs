@@ -1,6 +1,9 @@
 module Main where
 
-import Generate (game)
+import Generate (genGame)
 import Play (playGame)
 
-main = playGame game
+main :: IO ()
+main = do
+    game <- genGame
+    playGame game
