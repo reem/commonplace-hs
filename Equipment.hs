@@ -1,13 +1,6 @@
 module Equipment (
-    Equipment
-  , name
-  , description
-  , quote
-  , healthBoost
-  , attackBoost
-  , equipmentType
-
-  , EquipmentType(Helmet, Armor, Shield, Sword, Ring)
+    Equipment(..)
+  , EquipmentType(..)
     ) where
 
 import Quote (Quote)
