@@ -1,17 +1,22 @@
 module Game (
-    Game
-  , name
-  , description
-  , player
-  , gameMap
-    ) where
+    Game(..)
+  , EndGame(..)
+  , EndGameType(..)) where
 
-import Player (Player)
-import Room (GameMap)
+import qualified Player as P
+import qualified Room as R
 
 data Game = Game {
     name :: String
   , description :: String
-  , player :: Player
-  , gameMap :: GameMap
-} deriving (Show)
+  , player :: P.Player
+  , gameMap :: R.GameMap
+  , turnCount :: Int
+  , menu :: Game -> IO (Either EndGame Game)
+}
+
+instance Show Game where
+    show g = unlines [name g, "", description g, "", show $ player g]
+
+data EndGameType = PlayerDead | FinalBossDead
+newtype EndGame = EndGame EndGameType
